@@ -1,0 +1,61 @@
+// Brute Force Approach :
+// Idea : Check every pair of elements and see if their sum equals the target.
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n = nums.size();
+        for(int i = 0; i < n; i++){
+            for(int j = i+1; j < n; j++){
+                if(nums[i] + nums[j] == target){
+                    return {i, j};
+                }
+            }
+        }
+        return {};
+    }
+};
+/*
+Time Complexity: O(n^2)
+  --> Outer loop (n) timex
+  --> Inner loop runs approximately n times
+  
+Space Complexity: O(1)
+*/
+
+// Optimal Approach : Hash Map
+/*
+Idea: 
+  --> Store previously visited numbers in a hash map.
+  --> For every element:
+    --> Calculate remaining value:
+    --> target - nums[i]
+  --> If remaining value already exists in map, we found the answer.
+  --> Otherwise store current number with its index.
+*/
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n = nums.size();
+        unordered_map<int, int> mpp;
+
+        for (int i = 0; i < n; i++) {
+            int x = target - nums[i];
+
+            if (mpp.find(x) != mpp.end()) {
+                return {i, mpp[x]};
+            }
+            mpp[nums[i]] = i;
+        }        
+
+        return {-1, -1};
+    }
+};
+/*
+Time Complexity: O(n)
+  --> Each lookup and insertion in unordered_map takes average constant time.
+
+Space Complexity: O(n)
+  --> Hash map stores at most n elements.
+*/
