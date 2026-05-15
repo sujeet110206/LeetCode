@@ -1,8 +1,6 @@
 // Problem Link : https://leetcode.com/problems/two-sum/description/
 
 // Brute Force Approach :
-// Idea : Check every pair of elements and see if their sum equals the target.
-
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -17,25 +15,10 @@ public:
         return {};
     }
 };
-/*
-Time Complexity: O(n^2)
-  --> Outer loop (n) timex
-  --> Inner loop runs approximately n times
-  
-Space Complexity: O(1)
-*/
+// Time Complexity : O(n^2)  
+// Space Complexity: O(1)
 
 // Optimal Approach : Hash Map
-/*
-Idea: 
-  --> Store previously visited numbers in a hash map.
-  --> For every element:
-    --> Calculate remaining value:
-    --> target - nums[i]
-  --> If remaining value already exists in map, we found the answer.
-  --> Otherwise store current number with its index.
-*/
-
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -54,10 +37,5 @@ public:
         return {-1, -1};
     }
 };
-/*
-Time Complexity: O(n)
-  --> Each lookup and insertion in unordered_map takes average constant time.
-
-Space Complexity: O(n)
-  --> Hash map stores at most n elements.
-*/
+// Time Complexity: O(n)
+// Space Complexity: O(n)
